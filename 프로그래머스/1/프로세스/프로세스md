@@ -1,0 +1,37 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] priorities, int location) {
+        int answer = 0;
+        Queue<int[]> queue = new LinkedList<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+
+        // 큐 초기화
+        for (int i = 0; i < priorities.length; i++) {
+            queue.offer(new int[]{priorities[i], i}); // [우선순위, 인덱스] 쌍을 큐에 저장
+            pq.offer(priorities[i]); // 우선순위를 우선순위 큐에 저장
+        }
+
+        while (!queue.isEmpty()) {
+            int[] current = queue.poll(); // 현재 프로세스를 큐에서 꺼냄
+            int priority = current[0];
+            int index = current[1];
+
+            // 현재 프로세스의 우선순위가 가장 높은 경우 실행
+            if (priority >= pq.peek()) {
+                answer++;
+
+                // 실행된 프로세스가 찾고자 하는 프로세스인 경우 반환
+                if (index == location) {
+                    break;
+                }
+
+                pq.poll(); // 가장 높은 우선순위의 값을 우선순위 큐에서 제거
+            } else {
+                queue.offer(current); // 우선순위가 더 높은 프로세스가 있으면 다시 큐에 넣음
+            }
+        }
+
+        return answer;
+    }
+}
