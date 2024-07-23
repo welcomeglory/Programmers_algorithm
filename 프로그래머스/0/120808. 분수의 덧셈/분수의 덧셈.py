@@ -1,7 +1,7 @@
 import math
 
-def solution(denum1, num1, denum2, num2):
-    denum = denum1 * num2 + denum2 * num1
-    num = num1 * num2
-    gcd = math.gcd(denum, num)
-    return [denum/gcd, num/gcd]
+def solution(numer1, denom1, numer2, denom2):
+    x = numer1*denom2+denom1*numer2
+    y = denom1*denom2 
+    gcd = math.gcd(x, y) #최대공약수
+    return [x//gcd,y//gcd]
