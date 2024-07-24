@@ -1,3 +1,5 @@
-import math
 def solution(n):
-    return n//math.gcd(n,6)
+    x = 1
+    while (6 * x) % n != 0:
+        x += 1
+    return x
