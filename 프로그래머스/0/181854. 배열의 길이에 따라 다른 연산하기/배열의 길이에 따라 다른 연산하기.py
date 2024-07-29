@@ -1,6 +1,10 @@
 def solution(arr, n):
-    if len(arr) % 2 == 1:
-        return [arr[i] + n if i % 2 == 0 else arr[i] for i in range(len(arr))]
+    if len(arr) % 2:
+        for i in range(0, len(arr), 2):
+            arr[i] += n
     else:
-        return [arr[i] + n if i % 2 == 1 else arr[i] for i in range(len(arr))]
+        for i in range(1, len(arr), 2):
+            arr[i] += n
 
+    return arr
+        
