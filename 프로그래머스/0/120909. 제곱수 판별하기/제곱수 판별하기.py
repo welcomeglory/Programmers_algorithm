@@ -1,8 +1,5 @@
 import math
 def solution(n):
-    num = int(math.sqrt(n))
-    if num*num == n:
-        return 1
-    else:
-        return 2
+    return 1 if (n ** 0.5) % 1 == 0 else 2
+
    
