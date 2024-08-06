@@ -1,7 +1,6 @@
 def solution(arr):
     import math
     
-    # 현재 배열의 길이
     length = len(arr)
     
     # 배열의 길이가 2의 거듭제곱이 될 때까지 필요한 개수의 0을 추가
@@ -12,6 +11,6 @@ def solution(arr):
     zeros_to_add = next_power_of_two - length
     
     # 배열에 0 추가
-    result = arr + [0] * zeros_to_add
+    # result = arr + [0] * zeros_to_add
     
-    return result
+    return arr + [0] * zeros_to_add
