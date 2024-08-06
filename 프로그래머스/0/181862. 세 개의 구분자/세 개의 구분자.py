@@ -1,11 +1,6 @@
 def solution(myStr):
-    # 문자열을 'a', 'b', 'c'로 분할
-    parts = myStr.split('a')
-    parts = [item for sublist in [part.split('b') for part in parts] for item in sublist]
-    parts = [item for sublist in [part.split('c') for part in parts] for item in sublist]
+    # 'a', 'b', 'c'를 공백으로 대체
+    myStr = myStr.replace('a', ' ').replace('b', ' ').replace('c', ' ')
     
-    # 비어있는 문자열 요소를 제거
-    result = [part for part in parts if part]
-    
-    # 결과가 비어 있다면 ["EMPTY"] 반환
-    return result if result else ["EMPTY"]
+    # 공백을 기준으로 문자열을 분할하고 빈 배열일 경우 ["EMPTY"]를 반환
+    return myStr.split() if myStr.split() else ["EMPTY"]
