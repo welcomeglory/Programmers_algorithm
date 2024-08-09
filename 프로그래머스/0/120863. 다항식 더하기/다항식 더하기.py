@@ -1,25 +1,14 @@
-import re
-
 def solution(polynomial):
-    answer = ''
-    a = polynomial.split(" + ")
-    b, c = [], []
-    for i in a:
-        if i.isdigit():
-            c.append(i)
+    xnum = 0
+    const = 0
+    for c in polynomial.split(' + '):
+        if c.isdigit():
+            const+=int(c)
         else:
-            b.append(i)
-    d, e = 0, 0
-
-    for i in b:
-        d += 1 if i.isalpha() else int(i[:-1])
-    for i in c:
-        e += int(i)
-    if d and e:
-        answer = f'x + {e}' if d == 1 else f'{d}x + {e}'
-    elif d and not e:
-        answer = f'x' if d == 1 else f'{d}x'
-    elif not d and e:
-        answer = f'{e}'
-
-    return answer
+            xnum = xnum+1 if c=='x' else xnum+int(c[:-1])
+    if xnum == 0:
+        return str(const)
+    elif xnum==1:
+        return 'x + '+str(const) if const!=0 else 'x'
+    else:
+        return f'{xnum}x + {const}' if const!=0 else f'{xnum}x'
