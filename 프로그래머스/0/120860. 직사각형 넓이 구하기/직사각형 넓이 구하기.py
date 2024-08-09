@@ -1,4 +1,2 @@
 def solution(dots):
-    a,b,c,d = sorted(dots, key=lambda x:(x[0],x[1]))
-
-    return (b[1] - a[1]) * (c[0] - b[0])
+    return (max(dots)[0] - min(dots)[0])*(max(dots)[1] - min(dots)[1])
