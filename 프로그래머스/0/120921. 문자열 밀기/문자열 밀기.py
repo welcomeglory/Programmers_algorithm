@@ -1,3 +1,1 @@
-import re
-def solution(A, B):
-    return (B*2).index(A) if re.search(A,B*2) else -1
+solution=lambda a,b:(b*2).find(a)
