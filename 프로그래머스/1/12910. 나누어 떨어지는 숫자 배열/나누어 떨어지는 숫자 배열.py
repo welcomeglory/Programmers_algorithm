@@ -1,7 +1,2 @@
 def solution(arr, divisor):
-    filtered = [num for num in arr if num % divisor == 0]
-    
-    if filtered:
-        return sorted(filtered)
-    else:
-        return [-1]
+    return sorted([n for n in arr if n%divisor == 0]) or [-1]
