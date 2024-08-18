@@ -1,3 +1,2 @@
 def solution(x):
-    digit_sum = sum(int(digit) for digit in str(x))    
-    return x % digit_sum == 0
+    return x%sum(int(x) for x in str(x)) == 0
