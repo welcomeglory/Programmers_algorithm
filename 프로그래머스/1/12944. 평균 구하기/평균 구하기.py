@@ -1,3 +1,2 @@
-import numpy as np
 def solution(arr):
-    return np.mean(arr)
+    return sum(arr)/len(arr)
