@@ -1,6 +1,6 @@
 def solution(arr):
-    b = min(arr)
-    arr.remove(b)
-    if len(arr) < 2:
+    if len(arr) > 1:
+        arr.remove(min(arr))
+        return arr
+    else:
         return [-1]
-    return arr
