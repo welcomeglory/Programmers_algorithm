@@ -1,26 +1,12 @@
-from datetime import datetime, timedelta
-from dateutil.relativedelta import relativedelta
-
-def get_date(date):
-    return datetime.strptime(date, "%Y.%m.%d")
+def to_days(date):
+    year, month, day = map(int, date.split("."))
+    return year * 28 * 12 + month * 28 + day
 
 def solution(today, terms, privacies):
-    today = get_date(today)
-    answer = []
-    tm = {}
-
-    for t in terms:
-        term, mon = t.split(" ")
-        tm[term] = int(mon)
-
-    for i, p in enumerate(privacies):
-        date, term = p.split(" ")
-        time = tm[term]
-        start_date = get_date(date)
-        end_date = start_date + relativedelta(months=time)
-
-        if end_date <= today:
-            answer.append(i+1)
-
-
-    return answer
+    months = {v[0]: int(v[2:]) * 28 for v in terms}
+    today = to_days(today)
+    expire = [
+        i + 1 for i, privacy in enumerate(privacies)
+        if to_days(privacy[:-2]) + months[privacy[-1]] <= today
+    ]
+    return expire
